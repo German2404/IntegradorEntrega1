@@ -200,5 +200,30 @@ namespace PrimeraEntregaIntegrador
         {
 
         }
+
+        private void btnLimitar_Click(object sender, EventArgs e)
+        {
+            var a = analyzer.giveBruteForceRefinedAssotiations(Int32.Parse(desdeArticulos.Value.ToString()), Int32.Parse(hastaArticulos.Value.ToString()), Int32.Parse(desdeClientes.Value.ToString()), Int32.Parse(hastaClientes.Value.ToString()));
+        }
+
+        private void buttonAP_Click(object sender, EventArgs e)
+        {
+            var a = analyzer.giveAPrioriRefinedAssotiations(Int32.Parse(aprioriDA.Value.ToString()), Int32.Parse(aprioriHA.Value.ToString()), Int32.Parse(aprioriDC.Value.ToString()), Int32.Parse(aprioriHC.Value.ToString()));
+        }
+
+        private void buttonM_Click(object sender, EventArgs e)
+        {
+            var b = textBoxMarkov.Text.ToString().Split(',');
+            var set = new SortedSet<String>(b);
+
+            var a = analyzer.giveMarkovRefinedSuggestion(Int32.Parse(markovDA.Value.ToString()), Int32.Parse(markovHA.Value.ToString()), Int32.Parse(markovDC.Value.ToString()), Int32.Parse(markovHC.Value.ToString()), Int32.Parse(markovNumber.Value.ToString()), set);
+
+            MessageBox.Show(String.Join("-",a.ToArray()));
+        }
+
+        private void textBoxMarkov_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="PrimeraEntregaIntegrador.Analyzer">
+    <Position X="0.5" Y="3.75" Width="9.5" />
+    <AssociationLine Name="clients" Type="PrimeraEntregaIntegrador.Client">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.047" Y="0.409" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="transactions" Type="PrimeraEntregaIntegrador.Transaction">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.084" Y="0.424" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAgAAAgAgAAAgBAAAkgAhQQgQAAAKAIAAAAAAAAAgAA=</HashCode>
+      <FileName>Model\Analyzer.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="clients" />
+      <Field Name="transactions" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="PrimeraEntregaIntegrador.Association">
+    <Position X="11" Y="0.5" Width="4" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAEgAAAAAgAAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Association.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PrimeraEntregaIntegrador.Client">
+    <Position X="2.5" Y="9.5" Width="5.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAQAAAAAAAAAAAAACAAQIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Client.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PrimeraEntregaIntegrador.PowerSetGenerator">
+    <Position X="15.25" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>Model\PowerSetGenerator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PrimeraEntregaIntegrador.Transaction">
+    <Position X="3" Y="0.5" Width="4.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAgAAAAgIAAAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>Model\Transaction.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

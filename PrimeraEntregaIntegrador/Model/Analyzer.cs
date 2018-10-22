@@ -500,5 +500,41 @@ namespace PrimeraEntregaIntegrador
 
             return com;
         }
+
+        private SortedSet<String> giveMarkovSuggestion(SortedSet<String> items, List<Transaction> trans, int size)
+        {
+            var list = new List<String>();
+            foreach (Transaction t in trans)
+            {
+
+                if (items.IsSubsetOf(t.items))
+                {
+                    var ex = t.items.Except(items);
+
+                    list.AddRange(ex);
+                }
+            }
+
+            var found = list.Distinct();
+            Dictionary<String, int> counting = new Dictionary<string, int>();
+            foreach (String s in found)
+            {
+                counting.Add(s, list.Where(i => i == s).Count());
+            }
+            var cosa = counting.OrderByDescending(i => i.Value);
+            var taken = cosa.Take(size);
+            foreach (var x in taken)
+            {
+                Console.WriteLine(x.Key + ":" + x.Value);
+            }
+            return new SortedSet<string>(counting.Take(size).Select(i => i.Key));
+        }
+
+        public SortedSet<String> giveMarkovRefinedSuggestion(int infLimItems, int supLimItems, int infLimClients, int supLimClients, int size, SortedSet<String> set)
+        {
+            var a = this.prune(infLimItems, supLimItems, infLimClients, supLimClients);
+            return giveMarkovSuggestion(set,a, size);
+        }
+
     }
 }

@@ -28,16 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnLimitar = new System.Windows.Forms.Button();
+            this.buttonBF = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.hastaClientes = new System.Windows.Forms.NumericUpDown();
             this.desdeArticulos = new System.Windows.Forms.NumericUpDown();
@@ -49,19 +49,35 @@
             this.label6 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.label7 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonAP = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.aprioriHC = new System.Windows.Forms.NumericUpDown();
+            this.aprioriDA = new System.Windows.Forms.NumericUpDown();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
+            this.aprioriDC = new System.Windows.Forms.NumericUpDown();
+            this.aprioriHA = new System.Windows.Forms.NumericUpDown();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.markovHC = new System.Windows.Forms.NumericUpDown();
+            this.markovDA = new System.Windows.Forms.NumericUpDown();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.markovDC = new System.Windows.Forms.NumericUpDown();
+            this.markovHA = new System.Windows.Forms.NumericUpDown();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.markovNumber = new System.Windows.Forms.NumericUpDown();
+            this.buttonM = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.articlesTable = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.clientsTable = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.label20 = new System.Windows.Forms.Label();
+            this.textBoxMarkov = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.hastaClientes)).BeginInit();
@@ -69,10 +85,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.desdeClientes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hastaArticulos)).BeginInit();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.aprioriHC)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.aprioriDA)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.aprioriDC)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.aprioriHA)).BeginInit();
+            this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.markovHC)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.markovDA)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.markovDC)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.markovHA)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.markovNumber)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -85,16 +107,17 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Location = new System.Drawing.Point(895, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(269, 265);
+            this.tabControl1.Size = new System.Drawing.Size(269, 316);
             this.tabControl1.TabIndex = 14;
             // 
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.label1);
-            this.tabPage1.Controls.Add(this.btnLimitar);
+            this.tabPage1.Controls.Add(this.buttonBF);
             this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.hastaClientes);
             this.tabPage1.Controls.Add(this.desdeArticulos);
@@ -121,14 +144,15 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Limitar analisis por numero de articulos comprados:";
             // 
-            // btnLimitar
+            // buttonBF
             // 
-            this.btnLimitar.Location = new System.Drawing.Point(9, 196);
-            this.btnLimitar.Name = "btnLimitar";
-            this.btnLimitar.Size = new System.Drawing.Size(75, 23);
-            this.btnLimitar.TabIndex = 11;
-            this.btnLimitar.Text = "Limitar";
-            this.btnLimitar.UseVisualStyleBackColor = true;
+            this.buttonBF.Location = new System.Drawing.Point(46, 196);
+            this.buttonBF.Name = "buttonBF";
+            this.buttonBF.Size = new System.Drawing.Size(161, 23);
+            this.buttonBF.TabIndex = 11;
+            this.buttonBF.Text = "Mostrar Asociaciones FB";
+            this.buttonBF.UseVisualStyleBackColor = true;
+            this.buttonBF.Click += new System.EventHandler(this.btnLimitar_Click);
             // 
             // label2
             // 
@@ -206,14 +230,14 @@
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.label7);
-            this.tabPage2.Controls.Add(this.button1);
+            this.tabPage2.Controls.Add(this.buttonAP);
             this.tabPage2.Controls.Add(this.label8);
-            this.tabPage2.Controls.Add(this.numericUpDown1);
-            this.tabPage2.Controls.Add(this.numericUpDown2);
+            this.tabPage2.Controls.Add(this.aprioriHC);
+            this.tabPage2.Controls.Add(this.aprioriDA);
             this.tabPage2.Controls.Add(this.label9);
             this.tabPage2.Controls.Add(this.label10);
-            this.tabPage2.Controls.Add(this.numericUpDown3);
-            this.tabPage2.Controls.Add(this.numericUpDown4);
+            this.tabPage2.Controls.Add(this.aprioriDC);
+            this.tabPage2.Controls.Add(this.aprioriHA);
             this.tabPage2.Controls.Add(this.label11);
             this.tabPage2.Controls.Add(this.label12);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
@@ -233,14 +257,15 @@
             this.label7.TabIndex = 12;
             this.label7.Text = "Limitar analisis por numero de articulos comprados:";
             // 
-            // button1
+            // buttonAP
             // 
-            this.button1.Location = new System.Drawing.Point(11, 199);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 22;
-            this.button1.Text = "Limitar";
-            this.button1.UseVisualStyleBackColor = true;
+            this.buttonAP.Location = new System.Drawing.Point(52, 197);
+            this.buttonAP.Name = "buttonAP";
+            this.buttonAP.Size = new System.Drawing.Size(138, 23);
+            this.buttonAP.TabIndex = 22;
+            this.buttonAP.Text = "Mostrar Asosiaciones AP";
+            this.buttonAP.UseVisualStyleBackColor = true;
+            this.buttonAP.Click += new System.EventHandler(this.buttonAP_Click);
             // 
             // label8
             // 
@@ -251,19 +276,19 @@
             this.label8.TabIndex = 13;
             this.label8.Text = "Desde:";
             // 
-            // numericUpDown1
+            // aprioriHC
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(52, 149);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(120, 20);
-            this.numericUpDown1.TabIndex = 21;
+            this.aprioriHC.Location = new System.Drawing.Point(52, 149);
+            this.aprioriHC.Name = "aprioriHC";
+            this.aprioriHC.Size = new System.Drawing.Size(120, 20);
+            this.aprioriHC.TabIndex = 21;
             // 
-            // numericUpDown2
+            // aprioriDA
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(52, 32);
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(120, 20);
-            this.numericUpDown2.TabIndex = 14;
+            this.aprioriDA.Location = new System.Drawing.Point(52, 32);
+            this.aprioriDA.Name = "aprioriDA";
+            this.aprioriDA.Size = new System.Drawing.Size(120, 20);
+            this.aprioriDA.TabIndex = 14;
             // 
             // label9
             // 
@@ -283,19 +308,19 @@
             this.label10.TabIndex = 15;
             this.label10.Text = "Hasta:";
             // 
-            // numericUpDown3
+            // aprioriDC
             // 
-            this.numericUpDown3.Location = new System.Drawing.Point(52, 123);
-            this.numericUpDown3.Name = "numericUpDown3";
-            this.numericUpDown3.Size = new System.Drawing.Size(120, 20);
-            this.numericUpDown3.TabIndex = 19;
+            this.aprioriDC.Location = new System.Drawing.Point(52, 123);
+            this.aprioriDC.Name = "aprioriDC";
+            this.aprioriDC.Size = new System.Drawing.Size(120, 20);
+            this.aprioriDC.TabIndex = 19;
             // 
-            // numericUpDown4
+            // aprioriHA
             // 
-            this.numericUpDown4.Location = new System.Drawing.Point(52, 58);
-            this.numericUpDown4.Name = "numericUpDown4";
-            this.numericUpDown4.Size = new System.Drawing.Size(120, 20);
-            this.numericUpDown4.TabIndex = 16;
+            this.aprioriHA.Location = new System.Drawing.Point(52, 58);
+            this.aprioriHA.Name = "aprioriHA";
+            this.aprioriHA.Size = new System.Drawing.Size(120, 20);
+            this.aprioriHA.TabIndex = 16;
             // 
             // label11
             // 
@@ -315,6 +340,138 @@
             this.label12.TabIndex = 17;
             this.label12.Text = "Limitar analisis por frecuencia de compra:";
             // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.textBoxMarkov);
+            this.tabPage3.Controls.Add(this.label20);
+            this.tabPage3.Controls.Add(this.label14);
+            this.tabPage3.Controls.Add(this.label15);
+            this.tabPage3.Controls.Add(this.markovHC);
+            this.tabPage3.Controls.Add(this.markovDA);
+            this.tabPage3.Controls.Add(this.label16);
+            this.tabPage3.Controls.Add(this.label17);
+            this.tabPage3.Controls.Add(this.markovDC);
+            this.tabPage3.Controls.Add(this.markovHA);
+            this.tabPage3.Controls.Add(this.label18);
+            this.tabPage3.Controls.Add(this.label19);
+            this.tabPage3.Controls.Add(this.label13);
+            this.tabPage3.Controls.Add(this.markovNumber);
+            this.tabPage3.Controls.Add(this.buttonM);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(261, 290);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Markov";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(14, 10);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(245, 13);
+            this.label14.TabIndex = 22;
+            this.label14.Text = "Limitar analisis por numero de articulos comprados:";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(14, 28);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(41, 13);
+            this.label15.TabIndex = 23;
+            this.label15.Text = "Desde:";
+            // 
+            // markovHC
+            // 
+            this.markovHC.Location = new System.Drawing.Point(58, 143);
+            this.markovHC.Name = "markovHC";
+            this.markovHC.Size = new System.Drawing.Size(120, 20);
+            this.markovHC.TabIndex = 31;
+            // 
+            // markovDA
+            // 
+            this.markovDA.Location = new System.Drawing.Point(58, 26);
+            this.markovDA.Name = "markovDA";
+            this.markovDA.Size = new System.Drawing.Size(120, 20);
+            this.markovDA.TabIndex = 24;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(14, 145);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(38, 13);
+            this.label16.TabIndex = 30;
+            this.label16.Text = "Hasta:";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(14, 54);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(38, 13);
+            this.label17.TabIndex = 25;
+            this.label17.Text = "Hasta:";
+            // 
+            // markovDC
+            // 
+            this.markovDC.Location = new System.Drawing.Point(58, 117);
+            this.markovDC.Name = "markovDC";
+            this.markovDC.Size = new System.Drawing.Size(120, 20);
+            this.markovDC.TabIndex = 29;
+            // 
+            // markovHA
+            // 
+            this.markovHA.Location = new System.Drawing.Point(58, 52);
+            this.markovHA.Name = "markovHA";
+            this.markovHA.Size = new System.Drawing.Size(120, 20);
+            this.markovHA.TabIndex = 26;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(14, 119);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(41, 13);
+            this.label18.TabIndex = 28;
+            this.label18.Text = "Desde:";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(14, 101);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(201, 13);
+            this.label19.TabIndex = 27;
+            this.label19.Text = "Limitar analisis por frecuencia de compra:";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(55, 169);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(149, 13);
+            this.label13.TabIndex = 17;
+            this.label13.Text = "Numero de recomendaciones:";
+            // 
+            // markovNumber
+            // 
+            this.markovNumber.Location = new System.Drawing.Point(66, 185);
+            this.markovNumber.Name = "markovNumber";
+            this.markovNumber.Size = new System.Drawing.Size(120, 20);
+            this.markovNumber.TabIndex = 18;
+            // 
+            // buttonM
+            // 
+            this.buttonM.Location = new System.Drawing.Point(35, 254);
+            this.buttonM.Name = "buttonM";
+            this.buttonM.Size = new System.Drawing.Size(180, 23);
+            this.buttonM.TabIndex = 0;
+            this.buttonM.Text = "Mostrar Sugerencias Markov";
+            this.buttonM.UseVisualStyleBackColor = true;
+            this.buttonM.Click += new System.EventHandler(this.buttonM_Click);
+            // 
             // splitContainer1
             // 
             this.splitContainer1.Location = new System.Drawing.Point(12, 12);
@@ -333,36 +490,53 @@
             // 
             // articlesTable
             // 
-            chartArea1.Name = "ChartArea1";
-            this.articlesTable.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.articlesTable.Legends.Add(legend1);
+            chartArea3.Name = "ChartArea1";
+            this.articlesTable.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.articlesTable.Legends.Add(legend3);
             this.articlesTable.Location = new System.Drawing.Point(0, 0);
             this.articlesTable.Name = "articlesTable";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.articlesTable.Series.Add(series1);
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            this.articlesTable.Series.Add(series3);
             this.articlesTable.Size = new System.Drawing.Size(429, 523);
             this.articlesTable.TabIndex = 0;
             this.articlesTable.Text = "articlesTable";
             // 
             // clientsTable
             // 
-            chartArea2.Name = "ChartArea1";
-            this.clientsTable.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.clientsTable.Legends.Add(legend2);
+            chartArea4.Name = "ChartArea1";
+            this.clientsTable.ChartAreas.Add(chartArea4);
+            legend4.Name = "Legend1";
+            this.clientsTable.Legends.Add(legend4);
             this.clientsTable.Location = new System.Drawing.Point(-1, 0);
             this.clientsTable.Name = "clientsTable";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.clientsTable.Series.Add(series2);
+            series4.ChartArea = "ChartArea1";
+            series4.Legend = "Legend1";
+            series4.Name = "Series1";
+            this.clientsTable.Series.Add(series4);
             this.clientsTable.Size = new System.Drawing.Size(433, 523);
             this.clientsTable.TabIndex = 0;
             this.clientsTable.Text = "clientsTable";
             this.clientsTable.Click += new System.EventHandler(this.clientsTable_Click);
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(14, 213);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(211, 13);
+            this.label20.TabIndex = 32;
+            this.label20.Text = "Base de recomendación(Separado comas):";
+            // 
+            // textBoxMarkov
+            // 
+            this.textBoxMarkov.Location = new System.Drawing.Point(52, 229);
+            this.textBoxMarkov.Name = "textBoxMarkov";
+            this.textBoxMarkov.Size = new System.Drawing.Size(152, 20);
+            this.textBoxMarkov.TabIndex = 33;
+            this.textBoxMarkov.TextChanged += new System.EventHandler(this.textBoxMarkov_TextChanged);
             // 
             // Form1
             // 
@@ -382,10 +556,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.hastaArticulos)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.aprioriHC)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.aprioriDA)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.aprioriDC)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.aprioriHA)).EndInit();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.markovHC)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.markovDA)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.markovDC)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.markovHA)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.markovNumber)).EndInit();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
@@ -401,7 +582,7 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnLimitar;
+        private System.Windows.Forms.Button buttonBF;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.NumericUpDown hastaClientes;
         private System.Windows.Forms.NumericUpDown desdeArticulos;
@@ -413,18 +594,34 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonAP;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
+        private System.Windows.Forms.NumericUpDown aprioriHC;
+        private System.Windows.Forms.NumericUpDown aprioriDA;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.NumericUpDown numericUpDown3;
-        private System.Windows.Forms.NumericUpDown numericUpDown4;
+        private System.Windows.Forms.NumericUpDown aprioriDC;
+        private System.Windows.Forms.NumericUpDown aprioriHA;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.DataVisualization.Charting.Chart articlesTable;
         private System.Windows.Forms.DataVisualization.Charting.Chart clientsTable;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.Button buttonM;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.NumericUpDown markovNumber;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.NumericUpDown markovHC;
+        private System.Windows.Forms.NumericUpDown markovDA;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.NumericUpDown markovDC;
+        private System.Windows.Forms.NumericUpDown markovHA;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.TextBox textBoxMarkov;
+        private System.Windows.Forms.Label label20;
     }
 }
