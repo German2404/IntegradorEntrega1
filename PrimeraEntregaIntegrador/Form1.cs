@@ -33,6 +33,19 @@ namespace PrimeraEntregaIntegrador
             modificarGraficas();
         }
 
+        public Form1()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public int Property
+        {
+            get => default(int);
+            set
+            {
+            }
+        }
+
         public void modificarGraficas()
         {
             articlesTable.MouseEnter += grafica1_MouseEnter;
@@ -224,6 +237,11 @@ namespace PrimeraEntregaIntegrador
         private void textBoxMarkov_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        public void Method()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
