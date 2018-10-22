@@ -42,6 +42,11 @@ namespace PrimeraEntregaIntegrador
                 }
                 else
                 {
+                    if (!clients.ContainsKey(split[1]))
+                    {
+                        clients.Add(split[1], new Client(split[1], null, null, null, null));
+                    }
+                    
                     String[] dateSplit = split[2].Split('/');
                     items.Add(split[3]);
                     DateTime date = new DateTime(Int32.Parse(dateSplit[2]), Int32.Parse(dateSplit[1]), Int32.Parse(dateSplit[0]));
@@ -462,6 +467,38 @@ namespace PrimeraEntregaIntegrador
 
             return answer.Where(i=>this.calculateAssociationConfidence(i,prunnedTransactions)>=this.confidenceThreshold).ToList();
 
+        }
+
+        public Dictionary<int, int> generateArticlesTable()
+        {
+            int max = transactions.Max(i => i.Value.items.Count);
+            Dictionary<int, int> retorno = new Dictionary<int, int>();
+            for (int i = 1; i <= max; i++)
+            {
+                retorno[i] = 0;
+            }
+            foreach (var trans in transactions)
+            {
+                retorno[trans.Value.items.Count] += 1;
+
+            }
+            Console.WriteLine(retorno.Count);
+            return retorno;
+        }
+
+        public Dictionary<int, int> generateClientsTable()
+        {
+            List<int> compras = new List<int>();
+            foreach (var c in clients)
+            {
+                int cont = transactions.Where(t => t.Value.clientCode.Equals(c.Value.code)).Count();
+                compras.Add(cont);
+            }
+            Console.WriteLine(compras.Count);
+            var com = compras.Where(i => i != 0).GroupBy(i => i).ToDictionary(d => d.Key, d => d.Count());
+
+
+            return com;
         }
     }
 }
