@@ -1,49 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
-namespace PrimeraEntregaIntegrador
+namespace PrimeraEntregaIntegrador.View
 {
-    public partial class Form1 : Form
+    public partial class UCGraphics : UserControl
     {
-        private Analyzer analyzer;
 
-        public Form1()
+        Form1 f;
+
+        public UCGraphics()
         {
-            InitializeComponent();
-            analyzer = new Analyzer(0.01,0.01);
-            try
-            {
-                analyzer.readTransactions("./"+"datosFormatoFinal.txt");
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(this, e.Message);
-                System.Environment.Exit(1);
-            }
-
-            cargarHistogramas();
-            modificarGraficas();
-        }
-
-        public Form1()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public int Property
-        {
-            get => default(int);
-            set
-            {
-            }
+            
+           InitializeComponent();
+           
+           
         }
 
         public void modificarGraficas()
@@ -152,21 +130,19 @@ namespace PrimeraEntregaIntegrador
 
         private void cargarHistogramas()
         {
-            var articulos = analyzer.generateArticlesTable();
-            this.desdeArticulos.Minimum = articulos.Min(a => a.Key);
-            this.desdeArticulos.Maximum = articulos.Max(a => a.Key);
-            this.hastaArticulos.Minimum = articulos.Min(a => a.Key);
-            this.hastaArticulos.Maximum = articulos.Max(a => a.Key);
+           
+            var articulos = f.analyzer.generateArticlesTable();
+            //this.desdeArticulos.Minimum = articulos.Min(a => a.Key);
+            //this.desdeArticulos.Maximum = articulos.Max(a => a.Key);
+            //this.hastaArticulos.Minimum = articulos.Min(a => a.Key);
+            //this.hastaArticulos.Maximum = articulos.Max(a => a.Key);
 
 
-
-
-
-            var clientes = analyzer.generateClientsTable();
-            this.desdeClientes.Minimum = clientes.Min(a => a.Key);
-            this.desdeClientes.Maximum = clientes.Max(a => a.Key);
-            this.hastaClientes.Minimum = clientes.Min(a => a.Key);
-            this.hastaClientes.Maximum = clientes.Max(a => a.Key);
+            var clientes = f.analyzer.generateClientsTable();
+            //this.desdeClientes.Minimum = clientes.Min(a => a.Key);
+            //this.desdeClientes.Maximum = clientes.Max(a => a.Key);
+            //this.hastaClientes.Minimum = clientes.Min(a => a.Key);
+            //this.hastaClientes.Maximum = clientes.Max(a => a.Key);
             this.articlesTable.Series[0].Points.Clear();
 
             this.articlesTable.ChartAreas[0].AxisY.Maximum = articulos.Max(a => a.Value) + 20;
@@ -199,49 +175,26 @@ namespace PrimeraEntregaIntegrador
             }
         }
 
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        private void UCGraphics_Load(object sender, EventArgs e)
         {
 
         }
 
-        private void tableLayoutPanel1_Paint_1(object sender, PaintEventArgs e)
+        private void articlesTable_Click(object sender, EventArgs e)
         {
 
         }
 
         private void clientsTable_Click(object sender, EventArgs e)
         {
-
+            
         }
 
-        private void btnLimitar_Click(object sender, EventArgs e)
+        protected override  void OnLoad(EventArgs e)
         {
-            var a = analyzer.giveBruteForceRefinedAssotiations(Int32.Parse(desdeArticulos.Value.ToString()), Int32.Parse(hastaArticulos.Value.ToString()), Int32.Parse(desdeClientes.Value.ToString()), Int32.Parse(hastaClientes.Value.ToString()));
-        }
-
-        private void buttonAP_Click(object sender, EventArgs e)
-        {
-            var a = analyzer.giveAPrioriRefinedAssotiations(Int32.Parse(aprioriDA.Value.ToString()), Int32.Parse(aprioriHA.Value.ToString()), Int32.Parse(aprioriDC.Value.ToString()), Int32.Parse(aprioriHC.Value.ToString()));
-        }
-
-        private void buttonM_Click(object sender, EventArgs e)
-        {
-            var b = textBoxMarkov.Text.ToString().Split(',');
-            var set = new SortedSet<String>(b);
-
-            var a = analyzer.giveMarkovRefinedSuggestion(Int32.Parse(markovDA.Value.ToString()), Int32.Parse(markovHA.Value.ToString()), Int32.Parse(markovDC.Value.ToString()), Int32.Parse(markovHC.Value.ToString()), Int32.Parse(markovNumber.Value.ToString()), set);
-
-            MessageBox.Show(String.Join("-",a.ToArray()));
-        }
-
-        private void textBoxMarkov_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        public void Method()
-        {
-            throw new System.NotImplementedException();
+            f = (Form1)this.FindForm();
+            cargarHistogramas();
+            modificarGraficas();
         }
     }
 }

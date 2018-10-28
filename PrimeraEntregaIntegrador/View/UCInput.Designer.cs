@@ -1,13 +1,13 @@
-﻿namespace PrimeraEntregaIntegrador
+﻿namespace PrimeraEntregaIntegrador.View
 {
-    partial class Form1
+    partial class UCInput
     {
-        /// <summary>
+        /// <summary> 
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
+        /// <summary> 
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
@@ -20,20 +20,14 @@
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
+        #region Component Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
+        /// <summary> 
+        /// Required method for Designer support - do not modify 
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.label1 = new System.Windows.Forms.Label();
@@ -60,6 +54,8 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.textBoxMarkov = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.markovHC = new System.Windows.Forms.NumericUpDown();
@@ -73,11 +69,6 @@
             this.label13 = new System.Windows.Forms.Label();
             this.markovNumber = new System.Windows.Forms.NumericUpDown();
             this.buttonM = new System.Windows.Forms.Button();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.articlesTable = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.clientsTable = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.label20 = new System.Windows.Forms.Label();
-            this.textBoxMarkov = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.hastaClientes)).BeginInit();
@@ -95,12 +86,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.markovDC)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.markovHA)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.markovNumber)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.articlesTable)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.clientsTable)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -108,11 +93,11 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Location = new System.Drawing.Point(895, 12);
+            this.tabControl1.Location = new System.Drawing.Point(3, 3);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(269, 316);
-            this.tabControl1.TabIndex = 14;
+            this.tabControl1.TabIndex = 15;
             // 
             // tabPage1
             // 
@@ -130,10 +115,11 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(261, 239);
+            this.tabPage1.Size = new System.Drawing.Size(261, 290);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabFuerzaBruta";
             this.tabPage1.UseVisualStyleBackColor = true;
+            this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
             // 
             // label1
             // 
@@ -152,7 +138,7 @@
             this.buttonBF.TabIndex = 11;
             this.buttonBF.Text = "Mostrar Asociaciones FB";
             this.buttonBF.UseVisualStyleBackColor = true;
-            this.buttonBF.Click += new System.EventHandler(this.btnLimitar_Click);
+            this.buttonBF.Click += new System.EventHandler(this.buttonBF_Click);
             // 
             // label2
             // 
@@ -201,6 +187,7 @@
             this.desdeClientes.Name = "desdeClientes";
             this.desdeClientes.Size = new System.Drawing.Size(120, 20);
             this.desdeClientes.TabIndex = 8;
+            this.desdeClientes.ValueChanged += new System.EventHandler(this.desdeClientes_ValueChanged);
             // 
             // hastaArticulos
             // 
@@ -243,7 +230,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(261, 239);
+            this.tabPage2.Size = new System.Drawing.Size(261, 290);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabAPriori";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -265,7 +252,7 @@
             this.buttonAP.TabIndex = 22;
             this.buttonAP.Text = "Mostrar Asosiaciones AP";
             this.buttonAP.UseVisualStyleBackColor = true;
-            this.buttonAP.Click += new System.EventHandler(this.buttonAP_Click);
+            this.buttonAP.Click += new System.EventHandler(this.buttonAP_Click_1);
             // 
             // label8
             // 
@@ -363,6 +350,22 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Markov";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // textBoxMarkov
+            // 
+            this.textBoxMarkov.Location = new System.Drawing.Point(52, 229);
+            this.textBoxMarkov.Name = "textBoxMarkov";
+            this.textBoxMarkov.Size = new System.Drawing.Size(152, 20);
+            this.textBoxMarkov.TabIndex = 33;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(14, 213);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(211, 13);
+            this.label20.TabIndex = 32;
+            this.label20.Text = "Base de recomendación(Separado comas):";
             // 
             // label14
             // 
@@ -470,83 +473,15 @@
             this.buttonM.TabIndex = 0;
             this.buttonM.Text = "Mostrar Sugerencias Markov";
             this.buttonM.UseVisualStyleBackColor = true;
-            this.buttonM.Click += new System.EventHandler(this.buttonM_Click);
+            this.buttonM.Click += new System.EventHandler(this.buttonM_Click_1);
             // 
-            // splitContainer1
-            // 
-            this.splitContainer1.Location = new System.Drawing.Point(12, 12);
-            this.splitContainer1.Name = "splitContainer1";
-            // 
-            // splitContainer1.Panel1
-            // 
-            this.splitContainer1.Panel1.Controls.Add(this.articlesTable);
-            // 
-            // splitContainer1.Panel2
-            // 
-            this.splitContainer1.Panel2.Controls.Add(this.clientsTable);
-            this.splitContainer1.Size = new System.Drawing.Size(868, 523);
-            this.splitContainer1.SplitterDistance = 432;
-            this.splitContainer1.TabIndex = 15;
-            // 
-            // articlesTable
-            // 
-            chartArea3.Name = "ChartArea1";
-            this.articlesTable.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.articlesTable.Legends.Add(legend3);
-            this.articlesTable.Location = new System.Drawing.Point(0, 0);
-            this.articlesTable.Name = "articlesTable";
-            series3.ChartArea = "ChartArea1";
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            this.articlesTable.Series.Add(series3);
-            this.articlesTable.Size = new System.Drawing.Size(429, 523);
-            this.articlesTable.TabIndex = 0;
-            this.articlesTable.Text = "articlesTable";
-            // 
-            // clientsTable
-            // 
-            chartArea4.Name = "ChartArea1";
-            this.clientsTable.ChartAreas.Add(chartArea4);
-            legend4.Name = "Legend1";
-            this.clientsTable.Legends.Add(legend4);
-            this.clientsTable.Location = new System.Drawing.Point(-1, 0);
-            this.clientsTable.Name = "clientsTable";
-            series4.ChartArea = "ChartArea1";
-            series4.Legend = "Legend1";
-            series4.Name = "Series1";
-            this.clientsTable.Series.Add(series4);
-            this.clientsTable.Size = new System.Drawing.Size(433, 523);
-            this.clientsTable.TabIndex = 0;
-            this.clientsTable.Text = "clientsTable";
-            this.clientsTable.Click += new System.EventHandler(this.clientsTable_Click);
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(14, 213);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(211, 13);
-            this.label20.TabIndex = 32;
-            this.label20.Text = "Base de recomendación(Separado comas):";
-            // 
-            // textBoxMarkov
-            // 
-            this.textBoxMarkov.Location = new System.Drawing.Point(52, 229);
-            this.textBoxMarkov.Name = "textBoxMarkov";
-            this.textBoxMarkov.Size = new System.Drawing.Size(152, 20);
-            this.textBoxMarkov.TabIndex = 33;
-            this.textBoxMarkov.TextChanged += new System.EventHandler(this.textBoxMarkov_TextChanged);
-            // 
-            // Form1
+            // UCInput
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1168, 547);
-            this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.tabControl1);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "UCInput";
+            this.Size = new System.Drawing.Size(274, 321);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
@@ -567,12 +502,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.markovDC)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.markovHA)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.markovNumber)).EndInit();
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.articlesTable)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.clientsTable)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -604,13 +533,9 @@
         private System.Windows.Forms.NumericUpDown aprioriHA;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.DataVisualization.Charting.Chart articlesTable;
-        private System.Windows.Forms.DataVisualization.Charting.Chart clientsTable;
         private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.Button buttonM;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.NumericUpDown markovNumber;
+        private System.Windows.Forms.TextBox textBoxMarkov;
+        private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.NumericUpDown markovHC;
@@ -621,7 +546,8 @@
         private System.Windows.Forms.NumericUpDown markovHA;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.TextBox textBoxMarkov;
-        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.NumericUpDown markovNumber;
+        private System.Windows.Forms.Button buttonM;
     }
 }
