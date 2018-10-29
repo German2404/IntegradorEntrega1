@@ -11,6 +11,8 @@ namespace PrimeraEntregaIntegrador
 
         public SortedSet<String> from;
         public SortedSet<String> to;
+        public double support;
+        public double confidence;
 
         public Association(SortedSet<string> from, SortedSet<string> to)
         {

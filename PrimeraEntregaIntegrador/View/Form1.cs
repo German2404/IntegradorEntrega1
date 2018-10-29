@@ -20,7 +20,7 @@ namespace PrimeraEntregaIntegrador
         {
             InitializeComponent();
            
-            analyzer = new Analyzer(0.01,0.01);
+            analyzer = new Analyzer(0.03,0.20);
             try
             {
                 analyzer.readTransactions("./"+"datosFormatoFinal.txt");
@@ -88,5 +88,7 @@ namespace PrimeraEntregaIntegrador
         {
 
         }
+
+
     }
 }

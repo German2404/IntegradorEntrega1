@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Collections.Concurrent;
 using System.Threading;
+using System.Diagnostics;
+using Microsoft.Office.Interop.Excel;
 
 namespace PrimeraEntregaIntegrador
 {
@@ -53,6 +55,55 @@ namespace PrimeraEntregaIntegrador
                     transactions[split[0]] = new Transaction(split[0], split[1], date, split[3]);
                 }
             }
+        }
+
+
+        public void reportAP(int infLimItems, int supLimItems, int infLimClients, int supLimClients)
+        {
+            Console.WriteLine("Started");
+            var ass = this.giveAPrioriRefinedAssotiations(infLimItems, supLimItems, infLimClients, supLimClients);
+            Console.WriteLine("Termino..");
+            
+                var app = new Application { Visible = false };
+                Workbook wb = app.Workbooks.Add();
+                Worksheet ws = app.ActiveSheet;
+                ws.Cells[1, 1] = "ItemSet Assotiations.";
+                ws.Cells[2, 1] = "Parameters:";
+                ws.Cells[3, 1] = "Method Used:";
+                ws.Cells[3, 2] = "Apriori with transaction prunning";
+                ws.Cells[4, 1] = "Min. Support Threshold:";
+                ws.Cells[4, 2] = this.supportThreshold;
+
+                ws.Cells[5, 1] = "Min. Confidence Threshold:";
+                ws.Cells[5, 2] = this.confidenceThreshold;
+
+
+                ws.Cells[7, 1] = "Description";
+                ws.Cells[7, 2] = "Support Threshold";
+                ws.Cells[7, 3] = "Confidence Threshold";
+                int count = 8;
+                foreach (var asso in ass)
+                {
+                    ws.Cells[count, 1] = asso.ToString();
+                    ws.Cells[count, 2] = asso.support;
+                    ws.Cells[count, 3] = asso.confidence;
+                    count++;
+                }
+                String timeStamp = DateTime.Now.ToString("yyyy_MM_dd_HH_mm");
+                String path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Analyzer", "report" + "_" + timeStamp);
+                String dir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Analyzer");
+                if (!Directory.Exists(dir))
+                {
+                    Directory.CreateDirectory(dir);
+                }
+                
+                Console.WriteLine("Saving excel on " + path);
+                ws.SaveAs(path, XlFileFormat.xlWorkbookDefault);
+                wb.Close();
+                app.Quit();
+                File.Open(path, FileMode.Open);
+          
+            
         }
 
 
@@ -344,12 +395,12 @@ namespace PrimeraEntregaIntegrador
 
         public List<Association> giveAPrioriRefinedAssotiations(int infLimItems, int supLimItems, int infLimClients, int supLimClients)
         {
-            //Console.WriteLine("Transacciones totales:" + this.transactions.Count);
+            Console.WriteLine("Transacciones totales:" + this.transactions.Count);
             var prunnedTransactions = this.prune(infLimItems, supLimItems, infLimClients, supLimClients);
-            //Console.WriteLine("Transacciones refinadas:" + prunnedTransactions.Count);
+            Console.WriteLine("Transacciones refinadas:" + prunnedTransactions.Count);
             var fItemSets = this.giveAPrioriFrequentItemsSets(infLimItems, supLimItems, infLimClients, supLimClients,prunnedTransactions);
-          
-            //Console.WriteLine("ItemSets generated");
+
+            Console.WriteLine("ItemSets generated");
 
             List<Association> answer = new List<Association>();
             
@@ -369,7 +420,9 @@ namespace PrimeraEntregaIntegrador
                         Association a = new Association(new SortedSet<string>(itemSet.Except(item)), new SortedSet<String>(item));
                         
                         double c = this.calculateAssociationConfidence(a, prunnedTransactions);
-           
+                        double s = this.calculateAssociationSupport(a, prunnedTransactions);
+                        a.confidence = c;
+                        a.support = s;
                         if (c >= this.confidenceThreshold)
                         {
                            
@@ -402,7 +455,7 @@ namespace PrimeraEntregaIntegrador
 
                                 if (k != z)
                                 {
-                                    
+                                    //Console.WriteLine(i + " " + k + " " + z);
                                     String[] from1 = levels[currentLevel][k].from.ToArray();
                                     String[] from2 = levels[currentLevel][z].from.ToArray();
                                     String[] to1 = levels[currentLevel][k].to.ToArray();

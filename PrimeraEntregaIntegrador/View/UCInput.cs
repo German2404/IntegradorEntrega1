@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace PrimeraEntregaIntegrador.View
 {
@@ -58,12 +59,15 @@ namespace PrimeraEntregaIntegrador.View
 
             var a = f.analyzer.giveMarkovRefinedSuggestion(Int32.Parse(markovDA.Value.ToString()), Int32.Parse(markovHA.Value.ToString()), Int32.Parse(markovDC.Value.ToString()), Int32.Parse(markovHC.Value.ToString()), Int32.Parse(markovNumber.Value.ToString()), set);
 
-            MessageBox.Show(String.Join("-", a.ToArray()));
+            MessageBox.Show(String.Join("\n", a.ToArray()));
         }
 
         private void buttonAP_Click_1(object sender, EventArgs e)
         {
-            var a = f.analyzer.giveAPrioriRefinedAssotiations(Int32.Parse(aprioriDA.Value.ToString()), Int32.Parse(aprioriHA.Value.ToString()), Int32.Parse(aprioriDC.Value.ToString()), Int32.Parse(aprioriHC.Value.ToString()));
+            Console.WriteLine("AP clicked");
+            Thread t = new Thread(new ThreadStart(() => f.analyzer.reportAP(Int32.Parse(aprioriDA.Value.ToString()), Int32.Parse(aprioriHA.Value.ToString()), Int32.Parse(aprioriDC.Value.ToString()), Int32.Parse(aprioriHC.Value.ToString()))));
+            
+            t.Start();
         }
 
         private void buttonBF_Click(object sender, EventArgs e)

@@ -46,6 +46,7 @@
             this.ucInput1.Name = "ucInput1";
             this.ucInput1.Size = new System.Drawing.Size(274, 321);
             this.ucInput1.TabIndex = 1;
+
             // 
             // Form1
             // 
