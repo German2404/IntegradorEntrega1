@@ -69,7 +69,9 @@
             this.articlesTable.Legends.Add(legend1);
             this.articlesTable.Location = new System.Drawing.Point(3, 0);
             this.articlesTable.Name = "articlesTable";
+            series1.BorderColor = System.Drawing.Color.Black;
             series1.ChartArea = "ChartArea1";
+            series1.IsVisibleInLegend = false;
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             this.articlesTable.Series.Add(series1);
@@ -85,7 +87,9 @@
             this.clientsTable.Legends.Add(legend2);
             this.clientsTable.Location = new System.Drawing.Point(-1, 0);
             this.clientsTable.Name = "clientsTable";
+            series2.BorderColor = System.Drawing.Color.Black;
             series2.ChartArea = "ChartArea1";
+            series2.IsVisibleInLegend = false;
             series2.Legend = "Legend1";
             series2.Name = "Series1";
             this.clientsTable.Series.Add(series2);
