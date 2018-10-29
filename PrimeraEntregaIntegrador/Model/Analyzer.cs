@@ -57,56 +57,6 @@ namespace PrimeraEntregaIntegrador
             }
         }
 
-        public void reportMarkov(int infLimItems, int supLimItems, int infLimClients, int supLimClients, int size, SortedSet<String> set)
-        {
-            var sug = this.giveMarkovRefinedSuggestion(infLimItems, supLimItems, infLimClients, supLimClients, size, set).Select(i => new { Item = i.Key, Count = i.Value }).Take(size);
-            sug=sug.OrderByDescending(i => i.Count);
-            var app = new Application { Visible = false };
-            Workbook wb = app.Workbooks.Add();
-            Worksheet ws = app.ActiveSheet;
-            ws.Cells[1, 1] = "ItemSet Assotiations.";
-            ws.Cells[2, 1] = "Parameters:";
-            ws.Cells[3, 1] = "Method Used:";
-            ws.Cells[3, 2] = "Markov suggesion aproximation";
-            ws.Cells[4, 1] = "Min. Support Threshold:";
-            ws.Cells[4, 2] = this.supportThreshold;
-            //ws.Range[ws.Cells[4,2],ws.Cells[4,2]].NumberFormat = "###%";
-
-            ws.Cells[5, 1] = "Min. Confidence Threshold:";
-            ws.Cells[5, 2] = this.confidenceThreshold;
-            ws.Cells[6, 1] = "Recomendation Size:";
-            ws.Cells[6, 2] =size;
-
-
-            ws.Cells[8, 1] = "Item";
-            ws.Cells[8, 2] = "Support Count";
-
-            int count = 9;
-            foreach (var a in sug)
-            {
-                ws.Cells[count, 1] = a.Item;
-                ws.Cells[count, 2] = a.Count;
-          
-                count++;
-            }
-            String timeStamp = DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss");
-            String path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Analyzer", "report" + "_" + timeStamp);
-            String dir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Analyzer");
-            if (!Directory.Exists(dir))
-            {
-                Directory.CreateDirectory(dir);
-            }
-
-            Console.WriteLine("Saving excel on " + path);
-            ws.SaveAs(Filename: path + ".xlsx", FileFormat: XlFileFormat.xlWorkbookDefault);
-
-            app.Application.Quit();
-            Process.Start(path + ".xlsx");
-            //File.Open(path+".xlsx", FileMode.Open);
-
-
-        }
-
 
         public void reportAP(int infLimItems, int supLimItems, int infLimClients, int supLimClients)
         {
@@ -139,7 +89,7 @@ namespace PrimeraEntregaIntegrador
                     ws.Cells[count, 3] = asso.confidence;
                     count++;
                 }
-                String timeStamp = DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss");
+                String timeStamp = DateTime.Now.ToString("yyyy_MM_dd_HH_mm");
                 String path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Analyzer", "report" + "_" + timeStamp);
                 String dir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Analyzer");
                 if (!Directory.Exists(dir))
@@ -148,11 +98,10 @@ namespace PrimeraEntregaIntegrador
                 }
                 
                 Console.WriteLine("Saving excel on " + path);
-                ws.SaveAs(Filename:path+".xlsx",FileFormat: XlFileFormat.xlWorkbookDefault);
-                
-                app.Application.Quit();
-            Process.Start(path + ".xlsx");
-                //File.Open(path+".xlsx", FileMode.Open);
+                ws.SaveAs(path, XlFileFormat.xlWorkbookDefault);
+                wb.Close();
+                app.Quit();
+                File.Open(path, FileMode.Open);
           
             
         }
@@ -605,7 +554,7 @@ namespace PrimeraEntregaIntegrador
             return com;
         }
 
-        private Dictionary<String,int> giveMarkovSuggestion(SortedSet<String> items, List<Transaction> trans, int size)
+        private SortedSet<String> giveMarkovSuggestion(SortedSet<String> items, List<Transaction> trans, int size)
         {
             var list = new List<String>();
             foreach (Transaction t in trans)
@@ -626,15 +575,15 @@ namespace PrimeraEntregaIntegrador
                 counting.Add(s, list.Where(i => i == s).Count());
             }
             var cosa = counting.OrderByDescending(i => i.Value);
-            //var taken = cosa.Take(size);
-            //foreach (var x in taken)
-            //{
-            //    Console.WriteLine(x.Key + ":" + x.Value);
-            //}
-            return counting;
+            var taken = cosa.Take(size);
+            foreach (var x in taken)
+            {
+                Console.WriteLine(x.Key + ":" + x.Value);
+            }
+            return new SortedSet<string>(counting.Take(size).Select(i => i.Key));
         }
 
-        public Dictionary<String,int> giveMarkovRefinedSuggestion(int infLimItems, int supLimItems, int infLimClients, int supLimClients, int size, SortedSet<String> set)
+        public SortedSet<String> giveMarkovRefinedSuggestion(int infLimItems, int supLimItems, int infLimClients, int supLimClients, int size, SortedSet<String> set)
         {
             var a = this.prune(infLimItems, supLimItems, infLimClients, supLimClients);
             return giveMarkovSuggestion(set,a, size);

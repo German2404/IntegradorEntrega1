@@ -250,7 +250,7 @@
             this.buttonAP.Name = "buttonAP";
             this.buttonAP.Size = new System.Drawing.Size(138, 23);
             this.buttonAP.TabIndex = 22;
-            this.buttonAP.Text = "Generar Reporte";
+            this.buttonAP.Text = "Mostrar Asosiaciones AP";
             this.buttonAP.UseVisualStyleBackColor = true;
             this.buttonAP.Click += new System.EventHandler(this.buttonAP_Click_1);
             // 
@@ -471,7 +471,7 @@
             this.buttonM.Name = "buttonM";
             this.buttonM.Size = new System.Drawing.Size(180, 23);
             this.buttonM.TabIndex = 0;
-            this.buttonM.Text = "Generar Reporte";
+            this.buttonM.Text = "Mostrar Sugerencias Markov";
             this.buttonM.UseVisualStyleBackColor = true;
             this.buttonM.Click += new System.EventHandler(this.buttonM_Click_1);
             // 
