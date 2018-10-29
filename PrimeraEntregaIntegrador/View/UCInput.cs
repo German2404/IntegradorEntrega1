@@ -16,30 +16,30 @@ namespace PrimeraEntregaIntegrador.View
         private Form1 f;
         public UCInput()
         {
-            
+
             InitializeComponent();
         }
 
         protected override void OnLoad(EventArgs e)
         {
             f = (Form1)this.FindForm();
-         
+
         }
 
 
         private void btnLimitar_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void buttonAP_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void buttonM_Click(object sender, EventArgs e)
         {
-            
+
         }
         private void tabPage1_Click(object sender, EventArgs e)
         {
@@ -54,20 +54,67 @@ namespace PrimeraEntregaIntegrador.View
         private void buttonM_Click_1(object sender, EventArgs e)
         {
             Console.WriteLine("Boton presionado");
-            var b = textBoxMarkov.Text.ToString().Split(',');
-            var set = new SortedSet<String>(b);
+            var b2 = textBoxMarkov.Text.ToString().Split(',');
+            var set = new SortedSet<String>(b2);
+            
+          
+            Button b = sender as Button;
+            b.Enabled = false;
+            Console.WriteLine("AP clicked");
+            Thread t = new Thread(new ThreadStart(() => f.analyzer.reportMarkov(Int32.Parse(markovDA.Value.ToString()), Int32.Parse(markovHA.Value.ToString()), Int32.Parse(markovDC.Value.ToString()), Int32.Parse(markovHC.Value.ToString()), Int32.Parse(markovNumber.Value.ToString()), set)));
+            Thread buttonEnabler = new Thread(new ThreadStart(() => {
+                t.Join();
+                if (b.InvokeRequired)
+                {
+                    b.Invoke(new Action(() =>
+                    {
+                        b.Enabled = true;
+                    }));
 
-            var a = f.analyzer.giveMarkovRefinedSuggestion(Int32.Parse(markovDA.Value.ToString()), Int32.Parse(markovHA.Value.ToString()), Int32.Parse(markovDC.Value.ToString()), Int32.Parse(markovHC.Value.ToString()), Int32.Parse(markovNumber.Value.ToString()), set);
+                }
+                else
+                {
 
-            MessageBox.Show(String.Join("\n", a.ToArray()));
+                    b.Enabled = true;
+                }
+            }));
+
+
+            t.Start();
+            buttonEnabler.Start();
+          
         }
+
+       
 
         private void buttonAP_Click_1(object sender, EventArgs e)
         {
+            Button b = sender as Button;
+            b.Enabled = false;
             Console.WriteLine("AP clicked");
             Thread t = new Thread(new ThreadStart(() => f.analyzer.reportAP(Int32.Parse(aprioriDA.Value.ToString()), Int32.Parse(aprioriHA.Value.ToString()), Int32.Parse(aprioriDC.Value.ToString()), Int32.Parse(aprioriHC.Value.ToString()))));
-            
+            Thread buttonEnabler=new Thread(new ThreadStart(() =>{
+                t.Join();
+                if (b.InvokeRequired)
+                {
+                    b.Invoke(new Action(() =>
+                    {
+                        b.Enabled = true;
+                    }));
+
+                }
+                else
+                {
+
+                b.Enabled = true;
+                }
+            }));
+
+
             t.Start();
+            buttonEnabler.Start();
+
+
         }
 
         private void buttonBF_Click(object sender, EventArgs e)
