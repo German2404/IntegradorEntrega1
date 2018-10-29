@@ -59,6 +59,7 @@ namespace PrimeraEntregaIntegrador
 
         public void reportMarkov(int infLimItems, int supLimItems, int infLimClients, int supLimClients, int size, SortedSet<String> set)
         {
+
             var sug = this.giveMarkovRefinedSuggestion(infLimItems, supLimItems, infLimClients, supLimClients, size, set).Select(i => new { Item = i.Key, Count = i.Value }).Take(size);
             sug=sug.OrderByDescending(i => i.Count);
             var app = new Application { Visible = false };
