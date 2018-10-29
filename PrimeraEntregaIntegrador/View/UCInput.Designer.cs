@@ -246,7 +246,7 @@
             // 
             // buttonAP
             // 
-            this.buttonAP.Location = new System.Drawing.Point(52, 197);
+            this.buttonAP.Location = new System.Drawing.Point(52, 252);
             this.buttonAP.Name = "buttonAP";
             this.buttonAP.Size = new System.Drawing.Size(138, 23);
             this.buttonAP.TabIndex = 22;

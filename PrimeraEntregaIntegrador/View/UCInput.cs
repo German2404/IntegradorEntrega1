@@ -22,8 +22,16 @@ namespace PrimeraEntregaIntegrador.View
 
         protected override void OnLoad(EventArgs e)
         {
-            f = (Form1)this.FindForm();
-         
+            try
+            {
+                f = (Form1)this.FindForm();
+            }
+            catch(Exception s)
+            {
+                String error = s.StackTrace;
+            }
+            
+
         }
 
 
