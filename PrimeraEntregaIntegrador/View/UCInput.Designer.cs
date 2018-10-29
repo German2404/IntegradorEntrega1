@@ -69,6 +69,11 @@
             this.label13 = new System.Windows.Forms.Label();
             this.markovNumber = new System.Windows.Forms.NumericUpDown();
             this.buttonM = new System.Windows.Forms.Button();
+            this.numConfianza = new System.Windows.Forms.NumericUpDown();
+            this.label21 = new System.Windows.Forms.Label();
+            this.numSoporte = new System.Windows.Forms.NumericUpDown();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.hastaClientes)).BeginInit();
@@ -86,6 +91,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.markovDC)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.markovHA)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.markovNumber)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numConfianza)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numSoporte)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -216,6 +223,11 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.numConfianza);
+            this.tabPage2.Controls.Add(this.label21);
+            this.tabPage2.Controls.Add(this.numSoporte);
+            this.tabPage2.Controls.Add(this.label22);
+            this.tabPage2.Controls.Add(this.label23);
             this.tabPage2.Controls.Add(this.label7);
             this.tabPage2.Controls.Add(this.buttonAP);
             this.tabPage2.Controls.Add(this.label8);
@@ -266,6 +278,11 @@
             // aprioriHC
             // 
             this.aprioriHC.Location = new System.Drawing.Point(52, 149);
+            this.aprioriHC.Maximum = new decimal(new int[] {
+            200,
+            0,
+            0,
+            0});
             this.aprioriHC.Name = "aprioriHC";
             this.aprioriHC.Size = new System.Drawing.Size(120, 20);
             this.aprioriHC.TabIndex = 21;
@@ -273,6 +290,11 @@
             // aprioriDA
             // 
             this.aprioriDA.Location = new System.Drawing.Point(52, 32);
+            this.aprioriDA.Maximum = new decimal(new int[] {
+            200,
+            0,
+            0,
+            0});
             this.aprioriDA.Name = "aprioriDA";
             this.aprioriDA.Size = new System.Drawing.Size(120, 20);
             this.aprioriDA.TabIndex = 14;
@@ -298,6 +320,11 @@
             // aprioriDC
             // 
             this.aprioriDC.Location = new System.Drawing.Point(52, 123);
+            this.aprioriDC.Maximum = new decimal(new int[] {
+            200,
+            0,
+            0,
+            0});
             this.aprioriDC.Name = "aprioriDC";
             this.aprioriDC.Size = new System.Drawing.Size(120, 20);
             this.aprioriDC.TabIndex = 19;
@@ -305,6 +332,11 @@
             // aprioriHA
             // 
             this.aprioriHA.Location = new System.Drawing.Point(52, 58);
+            this.aprioriHA.Maximum = new decimal(new int[] {
+            200,
+            0,
+            0,
+            0});
             this.aprioriHA.Name = "aprioriHA";
             this.aprioriHA.Size = new System.Drawing.Size(120, 20);
             this.aprioriHA.TabIndex = 16;
@@ -475,6 +507,69 @@
             this.buttonM.UseVisualStyleBackColor = true;
             this.buttonM.Click += new System.EventHandler(this.buttonM_Click_1);
             // 
+            // numConfianza
+            // 
+            this.numConfianza.DecimalPlaces = 2;
+            this.numConfianza.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            131072});
+            this.numConfianza.Location = new System.Drawing.Point(70, 225);
+            this.numConfianza.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numConfianza.Name = "numConfianza";
+            this.numConfianza.Size = new System.Drawing.Size(120, 20);
+            this.numConfianza.TabIndex = 27;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(8, 227);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(57, 13);
+            this.label21.TabIndex = 26;
+            this.label21.Text = "Confianza:";
+            // 
+            // numSoporte
+            // 
+            this.numSoporte.DecimalPlaces = 2;
+            this.numSoporte.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            131072});
+            this.numSoporte.Location = new System.Drawing.Point(70, 199);
+            this.numSoporte.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numSoporte.Name = "numSoporte";
+            this.numSoporte.Size = new System.Drawing.Size(120, 20);
+            this.numSoporte.TabIndex = 25;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(8, 201);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(47, 13);
+            this.label22.TabIndex = 24;
+            this.label22.Text = "Soporte:";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(8, 183);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(190, 13);
+            this.label23.TabIndex = 23;
+            this.label23.Text = "Limitar analisis por soporte y confianza:";
+            // 
             // UCInput
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -502,6 +597,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.markovDC)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.markovHA)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.markovNumber)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numConfianza)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numSoporte)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -549,5 +646,10 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.NumericUpDown markovNumber;
         private System.Windows.Forms.Button buttonM;
+        private System.Windows.Forms.NumericUpDown numConfianza;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.NumericUpDown numSoporte;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label23;
     }
 }

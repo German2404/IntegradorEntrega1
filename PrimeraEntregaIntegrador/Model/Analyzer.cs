@@ -587,7 +587,6 @@ namespace PrimeraEntregaIntegrador
                 retorno[trans.Value.items.Count] += 1;
 
             }
-            Console.WriteLine(retorno.Count);
             return retorno;
         }
 
@@ -599,7 +598,7 @@ namespace PrimeraEntregaIntegrador
                 int cont = transactions.Where(t => t.Value.clientCode.Equals(c.Value.code)).Count();
                 compras.Add(cont);
             }
-            Console.WriteLine(compras.Count);
+            
             var com = compras.Where(i => i != 0).GroupBy(i => i).ToDictionary(d => d.Key, d => d.Count());
 
 

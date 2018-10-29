@@ -12,7 +12,7 @@ namespace PrimeraEntregaIntegrador
     {
         static void Main(string[] args)
         {
-            
+
             Application.Run(new Form1());
             //string linea = "";
             //for (int k = 0; k < 10; k++)

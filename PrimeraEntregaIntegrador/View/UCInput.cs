@@ -22,7 +22,15 @@ namespace PrimeraEntregaIntegrador.View
 
         protected override void OnLoad(EventArgs e)
         {
-            f = (Form1)this.FindForm();
+            try
+            {
+                f = (Form1)this.FindForm();
+            }
+            catch(Exception s)
+            {
+
+            }
+            
 
         }
 
@@ -91,7 +99,9 @@ namespace PrimeraEntregaIntegrador.View
         {
             Button b = sender as Button;
             b.Enabled = false;
-            Console.WriteLine("AP clicked");
+
+            f.analyzer.confidenceThreshold = (Double)numConfianza.Value;
+            f.analyzer.supportThreshold = (Double)numSoporte.Value;
             Thread t = new Thread(new ThreadStart(() => f.analyzer.reportAP(Int32.Parse(aprioriDA.Value.ToString()), Int32.Parse(aprioriHA.Value.ToString()), Int32.Parse(aprioriDC.Value.ToString()), Int32.Parse(aprioriHC.Value.ToString()))));
             Thread buttonEnabler=new Thread(new ThreadStart(() =>{
                 t.Join();
