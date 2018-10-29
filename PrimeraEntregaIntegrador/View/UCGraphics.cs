@@ -192,9 +192,17 @@ namespace PrimeraEntregaIntegrador.View
 
         protected override  void OnLoad(EventArgs e)
         {
-            f = (Form1)this.FindForm();
-            cargarHistogramas();
-            modificarGraficas();
+            try
+            {
+                f = (Form1)this.FindForm();
+                cargarHistogramas();
+                modificarGraficas();
+            }
+            catch(Exception s)
+            {
+               String error= s.StackTrace;
+            }
+            
         }
     }
 }

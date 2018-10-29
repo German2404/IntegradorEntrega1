@@ -89,6 +89,9 @@ namespace PrimeraEntregaIntegrador
 
         }
 
+        private void ucInput1_Load(object sender, EventArgs e)
+        {
 
+        }
     }
 }
