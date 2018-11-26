@@ -20,6 +20,10 @@ namespace PrimeraEntregaIntegrador
         public SortedSet<String> items;
         public double supportThreshold;
         public double confidenceThreshold;
+        public List<Association> APassociations;
+        public Dictionary<String, int> MarkovSuggestions;
+        public Dictionary<String, String> articles;
+
 
         public Analyzer(double supportThreshold, double confidenceThreshold)
         {
@@ -28,15 +32,36 @@ namespace PrimeraEntregaIntegrador
             this.transactions = new Dictionary<string, Transaction>();
             this.clients = new Dictionary<string, Client>();
             this.items = new SortedSet<string>();
+            this.articles = new Dictionary<string, string>();
+            APassociations = null;
+            MarkovSuggestions = null;
         }
 
 
-        public void readTransactions(String path)
+        public Dictionary<String,int>getSalesData(String itemCode)
         {
-            String[] lines = File.ReadAllLines(path);
+            var sales = transactions.Select(i => i.Value).Where(i => i.items.Contains(itemCode)).GroupBy(i => new { year = i.date.Year, month = i.date.Month }).Select(i=>new {year=i.Key.year, month=i.Key.month,count=i.Count() }).OrderBy(i=>i.year).ThenBy(i=>i.month);
+            Dictionary<String, int> returnSales = new Dictionary<string, int>();
+            foreach(var sale in sales)
+            {
+                returnSales.Add(sale.year + "-" + sale.month, sale.count);
+            }
+            return returnSales;
+        }
+
+
+        public void readTransactions(String[]lines)
+        {
+            
+            
             for (int i = 0; i < lines.Length; i++)
             {
-                String[] split = lines[i].Split(' ');
+               
+                String[] split = lines[i].Split('\t');
+                if (!this.articles.ContainsKey(split[3]))
+                {
+                    this.articles.Add(split[3], split[4]);
+                }
                 if (transactions.ContainsKey(split[0]))
                 {
                     items.Add(split[3]);
@@ -57,11 +82,11 @@ namespace PrimeraEntregaIntegrador
             }
         }
 
-        public void reportMarkov(int infLimItems, int supLimItems, int infLimClients, int supLimClients, int size, SortedSet<String> set)
+        public void reportMarkov(Dictionary<String,int>sugg,int size)
         {
-
-            var sug = this.giveMarkovRefinedSuggestion(infLimItems, supLimItems, infLimClients, supLimClients, size, set).Select(i => new { Item = i.Key, Count = i.Value }).Take(size);
-            sug=sug.OrderByDescending(i => i.Count);
+            
+            var sug = sugg.Select(i => new { Item = i.Key, Count = i.Value }).OrderByDescending(i=>i.Count).Take(size);
+           
             var app = new Application { Visible = false };
             Workbook wb = app.Workbooks.Add();
             Worksheet ws = app.ActiveSheet;
@@ -109,10 +134,10 @@ namespace PrimeraEntregaIntegrador
         }
 
 
-        public void reportAP(int infLimItems, int supLimItems, int infLimClients, int supLimClients)
+        public void reportAP(List<Association> ass)
         {
             Console.WriteLine("Started");
-            var ass = this.giveAPrioriRefinedAssotiations(infLimItems, supLimItems, infLimClients, supLimClients);
+           
             Console.WriteLine("Termino..");
             
                 var app = new Application { Visible = false };

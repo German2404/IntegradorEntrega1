@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{152827A0-CF28-4511-A6F7-4700E2B739A8}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>WinExe</OutputType>
     <RootNamespace>PrimeraEntregaIntegrador</RootNamespace>
     <AssemblyName>PrimeraEntregaIntegrador</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
@@ -32,6 +32,12 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Chrisl21-Minecraft-Diamond-Pickaxe.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -46,6 +52,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="View\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -64,12 +75,6 @@
     </Compile>
     <Compile Include="View\UCGraphics.Designer.cs">
       <DependentUpon>UCGraphics.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\UCInput.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="View\UCInput.Designer.cs">
-      <DependentUpon>UCInput.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -119,22 +124,30 @@
     <Content Include="9.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="datosFormatoFinal.txt">
+    <Content Include="Chrisl21-Minecraft-Diamond-Pickaxe.ico" />
+    <EmbeddedResource Include="recursos\cargando.gif">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    </EmbeddedResource>
+    <EmbeddedResource Include="recursos\check.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="datosFormatoFinal.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
     <Content Include="transacciones.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\UCGraphics.resx">
       <DependentUpon>UCGraphics.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\UCInput.resx">
-      <DependentUpon>UCInput.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
